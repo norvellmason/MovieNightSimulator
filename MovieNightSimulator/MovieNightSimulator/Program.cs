@@ -116,6 +116,7 @@ namespace MovieNightSimulator
             Console.WriteLine("Total Movie Nights: " + totalMovieNights);
             Console.WriteLine("Times Corey Picked a Sequel: " + totalSequelPicks);
             Console.WriteLine("Times Someone Attended a Sequel But Missed Part 1: " + totalSequelConflicts);
+            Console.WriteLine("");
         }
 
         static HashSet<People> GetAttendees()
@@ -149,13 +150,5 @@ namespace MovieNightSimulator
 
             return allPeople;
         }
-
-        //public bool AnyoneAttendingCanBePicked(HashSet<People> attendees)
-        //{
-        //    foreach (People person in attendees)
-        //    {
-
-        //    }
-        //}
     }
 }
