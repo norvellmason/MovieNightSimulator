@@ -19,11 +19,11 @@ namespace MovieNightSimulator
 
         static Dictionary<People, float> AttendanceRates2024 = new Dictionary<People, float>
         {
-            {People.Corey, 0.9f },
-            {People.Jon, 0.725f },
-            {People.Kasey, 0.85f },
-            {People.Mason, 0.9f },
-            {People.Zak, 0.375f },
+            { People.Corey, 0.9f },
+            { People.Jon, 0.725f },
+            { People.Kasey, 0.85f },
+            { People.Mason, 0.9f },
+            { People.Zak, 0.375f },
         };
 
         static Random random = new Random();
@@ -42,21 +42,11 @@ namespace MovieNightSimulator
                 totalSequelConflictTotals.Add(totalSequelConflicts);
             }
 
-            Console.WriteLine("Total Movie Nights Average: " + GetAverage(totalMovieNightTotals));
-            Console.WriteLine("Times Corey Picked a Sequel Average: " + GetAverage(totalSequelPickTotals));
-            Console.WriteLine("Times Someone Attended a Sequel But Missed Part 1 Average: " + GetAverage(totalSequelConflictTotals));
+            Console.WriteLine("Total Movie Nights Average: " + totalMovieNightTotals.Average());
+            Console.WriteLine("Times Corey Picked a Sequel Average: " + totalSequelPickTotals.Average());
+            Console.WriteLine("Times Someone Attended a Sequel But Missed Part 1 Average: " + totalSequelConflictTotals.Average());
 
-            Console.WriteLine("Percentage Of Sequels That Were Problematic: " + (GetAverage(totalSequelConflictTotals) / GetAverage(totalSequelPickTotals)));
-        }
-
-        static float GetAverage(List<int> list)
-        {
-            int total = 0;
-            foreach (int num in list)
-            {
-                total += num;
-            }
-            return (float)total / list.Count;
+            Console.WriteLine("Percentage Of Sequels That Were Problematic: " + (totalSequelConflictTotals.Average() / totalSequelPickTotals.Average()));
         }
 
         static void SimulateAYearOfMovieNight(out int totalMovieNights, out int totalSequelPicks, out int totalSequelConflicts)
