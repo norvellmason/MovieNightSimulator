@@ -34,7 +34,7 @@ namespace MovieNightSimulator
             List<int> totalSequelPickTotals = new List<int>();
             List<int> totalSequelConflictTotals = new List<int>();
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 5000; i++)
             {
                 SimulateAYearOfMovieNight(out int totalMovieNights, out int totalSequelPicks, out int totalSequelConflicts);
                 totalMovieNightTotals.Add(totalMovieNights);
@@ -73,12 +73,12 @@ namespace MovieNightSimulator
             for (int currentWeek = 0; currentWeek < 52; currentWeek++)
             {
                 HashSet<People> attendees = GetAttendees();
-
                 if (attendees.Count >= 2)
                 {
                     IEnumerable<People> eligibleAndAttending = peopleEligibleToBePicked.Intersect(attendees);
                     if (eligibleAndAttending.Count() == 0)
                     {
+                        // Reset week
                         peopleEligibleToBePicked = GetNewSetOfAllPeople();
                         eligibleAndAttending = peopleEligibleToBePicked.Intersect(attendees);
                     }
@@ -110,6 +110,7 @@ namespace MovieNightSimulator
                             }
                         }
                     }
+                    peopleEligibleToBePicked.Remove(personPicked);
                 }
             }
 
